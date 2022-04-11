@@ -2,6 +2,7 @@ package school.service;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 import school.entity.TeachersEntity;
@@ -19,25 +20,47 @@ public class TeachersService {
         return teachersRepository.save(convertToEntity(teacher, teachersDto));
     }
 
-    public List<TeachersEntity> getAllTeachers() {
-        return teachersRepository.findAll();
+    public List<TeachersDto> getAllTeachers() {
+        return convertToDTOs(teachersRepository.findAll());
     }
 
-    public TeachersEntity getTeacherById(Long id) {
-        return teachersRepository.findById(id).orElse(null);
+    public TeachersDto getTeacherById(Long id) {
+        return convertToDTO(teachersRepository.findById(id).orElse(null));
     }
 
-    public TeachersEntity editTeacherById(Long personId, TeachersDto teachersDto) {
+    public TeachersDto editTeacherById(Long personId, TeachersDto teachersDto) {
         TeachersEntity teacher = teachersRepository.findById(personId).orElse(null);
         if (teacher == null) return null;
 
-        return teachersRepository.save(convertToEntity(teacher, teachersDto));
+        return convertToDTO(teachersRepository.save(convertToEntity(teacher, teachersDto)));
     }
 
     public void removeTeacherById(Long id) {
         if (teachersRepository.existsById(id)) {
             teachersRepository.deleteById(id);
         }
+    }
+
+    // -------------------------------- Convert Functions -----------------------------------
+
+    private List<TeachersDto> convertToDTOs(List<TeachersEntity> teachers) {
+        List<TeachersDto> teachersDto = new ArrayList<>();
+        for (TeachersEntity teacher: teachers) {
+            teachersDto.add(convertToDTO(teacher));
+        }
+        return teachersDto;
+    }
+
+    private TeachersDto convertToDTO(TeachersEntity teachersEntity) {
+        if (teachersEntity == null) return null;
+
+        TeachersDto teacher = new TeachersDto();
+        teacher.setId(teachersEntity.getId());
+        teacher.setFirstName(teachersEntity.getFirstName());
+        teacher.setLastName(teachersEntity.getLastName());
+        teacher.setDateOfBirth(teachersEntity.getDateOfBirth());
+        teacher.setGender(teachersEntity.getGender());
+        return teacher;
     }
 
     private TeachersEntity convertToEntity(TeachersEntity teacher, TeachersDto teachersDto) {
@@ -49,5 +72,7 @@ public class TeachersService {
         teacher.setDateOfBirth(teachersDto.getDateOfBirth());
         return teacher;
     }
+
+    // ------------------------------------------------------------------------------------
 }
  

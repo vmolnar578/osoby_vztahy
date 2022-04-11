@@ -7,7 +7,6 @@ import school.service.StudentsService;
 import school.entity.StudentsEntity;
 import school.dto.StudentsDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,24 +39,4 @@ public class StudentsController {
     public void removeStudentById(@PathVariable Long studentId) {
         service.removeStudentById(studentId);
     }
-
-    /*private List<StudentsDto> convertToDTOs(List<StudentsEntity> students) {
-        List<StudentsDto> studentsDto = new ArrayList<StudentsDto>();
-        for (StudentsEntity student: students) {
-            studentsDto.add(convertToDTO(student));
-        }
-        return studentsDto;
-    }
-
-    private StudentsDto convertToDTO(StudentsEntity studentsEntity) {
-        if (studentsEntity == null) return null;
-
-        StudentsDto student = new StudentsDto();
-        student.setId(studentsEntity.getId());
-        student.setFirstName(studentsEntity.getFirstName());
-        student.setLastName(studentsEntity.getLastName());
-        student.setDateOfBirth(studentsEntity.getDateOfBirth());
-        student.setGender(studentsEntity.getGender());
-        return student;
-    }*/
 }
