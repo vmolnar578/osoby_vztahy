@@ -44,7 +44,7 @@ public class StudentsService {
     // -------------------------------- Convert Functions -----------------------------------
 
     private List<StudentsDto> convertToDTOs(List<StudentsEntity> students) {
-        List<StudentsDto> studentsDto = new ArrayList<StudentsDto>();
+        List<StudentsDto> studentsDto = new ArrayList<>();
         for (StudentsEntity student: students) {
             studentsDto.add(convertToDTO(student));
         }
