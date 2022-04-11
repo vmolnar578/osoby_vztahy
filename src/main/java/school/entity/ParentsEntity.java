@@ -17,7 +17,7 @@ public class ParentsEntity {
     private String lastName;
 
     @Column(name = "date_birth", nullable = false)
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     @Column(name = "gender", nullable = false)
     private String gender;
@@ -46,11 +46,11 @@ public class ParentsEntity {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
