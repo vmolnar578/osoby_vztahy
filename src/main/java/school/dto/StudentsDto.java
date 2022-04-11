@@ -7,7 +7,7 @@ public class StudentsDto {
     private String firstName;
     private String lastName;
     private Integer grade;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String gender;
 
     public long getId() {
@@ -42,11 +42,11 @@ public class StudentsDto {
         this.grade = grade;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
