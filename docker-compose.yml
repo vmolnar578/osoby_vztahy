@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  library:
+    restart: always
+    image: sameersbn/postgresql:10-2
+    environment:
+      - PG_TRUST_LOCALNET=true
+      - DB_NAME=school
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - PG_RUNDIR=/run/postgres
+      - PG_LOGDIR=/var/log/postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql
+      - logs:/var/log/postgresql
+
+volumes:
+  data:
+  logs:
