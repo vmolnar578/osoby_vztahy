@@ -20,10 +20,13 @@ public class StudentsEntity {
     private Integer grade;
 
     @Column(name = "date_birth", nullable = false)
-    private String dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "gender", nullable = false)
     private String gender;
+
+    @Column(name = "lunch_id", nullable = false)
+    private long lunchId;
 
     public long getId() {
         return id;
@@ -57,11 +60,11 @@ public class StudentsEntity {
         this.grade = grade;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -72,5 +75,12 @@ public class StudentsEntity {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public long getLunchId() {
+        return lunchId;
+    }
+
+    public void setLunchId(long lunchId) {
+        this.lunchId = lunchId;
+    }
 }
- 

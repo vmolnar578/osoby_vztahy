@@ -17,10 +17,16 @@ public class TeachersEntity {
     private String lastName;
 
     @Column(name = "date_birth", nullable = false)
-    private String dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "gender", nullable = false)
     private String gender;
+
+    @Column(name = "lunch_id", nullable = false)
+    private long lunchId;
+
+    @Column(name = "phone_number", nullable = false)
+    private long phoneNumber;
 
     public long getId() {
         return id;
@@ -46,11 +52,11 @@ public class TeachersEntity {
         this.lastName = lastName;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -61,5 +67,20 @@ public class TeachersEntity {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public long getLunchId() {
+        return lunchId;
+    }
+
+    public void setLunchId(long lunchId) {
+        this.lunchId = lunchId;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
- 

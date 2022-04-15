@@ -60,6 +60,7 @@ public class ParentsService {
         parent.setLastName(parentsEntity.getLastName());
         parent.setDateOfBirth(parentsEntity.getDateOfBirth());
         parent.setGender(parentsEntity.getGender());
+        parent.setPhoneNumber(parentsEntity.getPhoneNumber());
         return parent;
     }
 
@@ -70,6 +71,7 @@ public class ParentsService {
         parent.setLastName(parentsDto.getLastName());
         parent.setGender(parentsDto.getGender());
         parent.setDateOfBirth(parentsDto.getDateOfBirth());
+        parent.setPhoneNumber(parentsDto.getPhoneNumber());
         return parent;
     }
 

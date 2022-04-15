@@ -7,8 +7,9 @@ public class StudentsDto {
     private String firstName;
     private String lastName;
     private Integer grade;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String gender;
+    private long lunchId;
 
     public long getId() {
         return id;
@@ -42,11 +43,11 @@ public class StudentsDto {
         this.grade = grade;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -56,6 +57,14 @@ public class StudentsDto {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public long getLunchId() {
+        return lunchId;
+    }
+
+    public void setLunchId(long lunchId) {
+        this.lunchId = lunchId;
     }
 }
 

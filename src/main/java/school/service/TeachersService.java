@@ -60,6 +60,8 @@ public class TeachersService {
         teacher.setLastName(teachersEntity.getLastName());
         teacher.setDateOfBirth(teachersEntity.getDateOfBirth());
         teacher.setGender(teachersEntity.getGender());
+        teacher.setLunchId(teachersEntity.getLunchId());
+        teacher.setPhoneNumber(teachersEntity.getPhoneNumber());
         return teacher;
     }
 
@@ -70,6 +72,8 @@ public class TeachersService {
         teacher.setLastName(teachersDto.getLastName());
         teacher.setGender(teachersDto.getGender());
         teacher.setDateOfBirth(teachersDto.getDateOfBirth());
+        teacher.setLunchId(teachersDto.getLunchId());
+        teacher.setPhoneNumber(teachersDto.getPhoneNumber());
         return teacher;
     }
 
