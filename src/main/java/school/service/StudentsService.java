@@ -44,7 +44,7 @@ public class StudentsService {
     // -------------------------------- Convert Functions -----------------------------------
 
     private List<StudentsDto> convertToDTOs(List<StudentsEntity> students) {
-        List<StudentsDto> studentsDto = new ArrayList<StudentsDto>();
+        List<StudentsDto> studentsDto = new ArrayList<>();
         for (StudentsEntity student: students) {
             studentsDto.add(convertToDTO(student));
         }
@@ -61,6 +61,7 @@ public class StudentsService {
         student.setGrade(studentsEntity.getGrade());
         student.setGender(studentsEntity.getGender());
         student.setDateOfBirth(studentsEntity.getDateOfBirth());
+        student.setLunchId(studentsEntity.getLunchId());
         return student;
     }
 
@@ -72,6 +73,7 @@ public class StudentsService {
         student.setGrade(studentsDto.getGrade());
         student.setGender(studentsDto.getGender());
         student.setDateOfBirth(studentsDto.getDateOfBirth());
+        student.setLunchId(studentsDto.getLunchId());
         return student;
     }
 

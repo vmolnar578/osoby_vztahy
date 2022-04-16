@@ -25,6 +25,9 @@ public class StudentsEntity {
     @Column(name = "gender", nullable = false)
     private String gender;
 
+    @Column(name = "lunch_id", nullable = false)
+    private long lunchId;
+
     public long getId() {
         return id;
     }
@@ -72,5 +75,12 @@ public class StudentsEntity {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public long getLunchId() {
+        return lunchId;
+    }
+
+    public void setLunchId(long lunchId) {
+        this.lunchId = lunchId;
+    }
 }
- 

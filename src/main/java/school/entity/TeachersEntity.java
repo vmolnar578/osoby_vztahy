@@ -22,6 +22,12 @@ public class TeachersEntity {
     @Column(name = "gender", nullable = false)
     private String gender;
 
+    @Column(name = "lunch_id", nullable = false)
+    private long lunchId;
+
+    @Column(name = "phone_number", nullable = false)
+    private long phoneNumber;
+
     public long getId() {
         return id;
     }
@@ -61,5 +67,20 @@ public class TeachersEntity {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public long getLunchId() {
+        return lunchId;
+    }
+
+    public void setLunchId(long lunchId) {
+        this.lunchId = lunchId;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
- 

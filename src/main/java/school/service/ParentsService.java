@@ -2,6 +2,7 @@ package school.service;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 import school.dto.ParentsDto;
@@ -19,25 +20,48 @@ public class ParentsService {
         return parentsRepository.save(convertToEntity(parent, parentsDto));
     }
 
-    public List<ParentsEntity> getAllParents() {
-        return parentsRepository.findAll();
+    public List<ParentsDto> getAllParents() {
+        return convertToDTOs(parentsRepository.findAll());
     }
 
-    public ParentsEntity getParentById(Long id) {
-        return parentsRepository.findById(id).orElse(null);
+    public ParentsDto getParentById(Long id) {
+        return convertToDTO(parentsRepository.findById(id).orElse(null));
     }
 
-    public ParentsEntity editParentById(Long personId, ParentsDto parentsDto) {
+    public ParentsDto editParentById(Long personId, ParentsDto parentsDto) {
         ParentsEntity parent = parentsRepository.findById(personId).orElse(null);
         if (parent == null) return null;
 
-        return parentsRepository.save(convertToEntity(parent, parentsDto));
+        return convertToDTO(parentsRepository.save(convertToEntity(parent, parentsDto)));
     }
 
     public void removeParentById(Long id) {
         if (parentsRepository.existsById(id)) {
             parentsRepository.deleteById(id);
         }
+    }
+
+    // -------------------------------- Convert Functions -----------------------------------
+
+    private List<ParentsDto> convertToDTOs(List<ParentsEntity> parents) {
+        List<ParentsDto> parentsDto = new ArrayList<>();
+        for (ParentsEntity parent: parents) {
+            parentsDto.add(convertToDTO(parent));
+        }
+        return parentsDto;
+    }
+
+    private ParentsDto convertToDTO(ParentsEntity parentsEntity) {
+        if (parentsEntity == null) return null;
+
+        ParentsDto parent = new ParentsDto();
+        parent.setId(parentsEntity.getId());
+        parent.setFirstName(parentsEntity.getFirstName());
+        parent.setLastName(parentsEntity.getLastName());
+        parent.setDateOfBirth(parentsEntity.getDateOfBirth());
+        parent.setGender(parentsEntity.getGender());
+        parent.setPhoneNumber(parentsEntity.getPhoneNumber());
+        return parent;
     }
 
     private ParentsEntity convertToEntity(ParentsEntity parent, ParentsDto parentsDto) {
@@ -47,7 +71,10 @@ public class ParentsService {
         parent.setLastName(parentsDto.getLastName());
         parent.setGender(parentsDto.getGender());
         parent.setDateOfBirth(parentsDto.getDateOfBirth());
+        parent.setPhoneNumber(parentsDto.getPhoneNumber());
         return parent;
     }
+
+    // ------------------------------------------------------------------------------------
 }
  

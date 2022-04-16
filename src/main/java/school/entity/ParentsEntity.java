@@ -22,6 +22,9 @@ public class ParentsEntity {
     @Column(name = "gender", nullable = false)
     private String gender;
 
+    @Column(name = "phone_number", nullable = false)
+    private long phoneNumber;
+
     public long getId() {
         return id;
     }
@@ -61,5 +64,12 @@ public class ParentsEntity {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
- 

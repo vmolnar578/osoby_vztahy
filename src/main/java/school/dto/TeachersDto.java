@@ -8,6 +8,8 @@ public class TeachersDto {
     private String lastName;
     private Date dateOfBirth;
     private String gender;
+    private long lunchId;
+    private long phoneNumber;
 
     public long getId() {
         return id;
@@ -47,6 +49,22 @@ public class TeachersDto {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public long getLunchId() {
+        return lunchId;
+    }
+
+    public void setLunchId(long lunchId) {
+        this.lunchId = lunchId;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
 

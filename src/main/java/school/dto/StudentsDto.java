@@ -9,6 +9,7 @@ public class StudentsDto {
     private Integer grade;
     private Date dateOfBirth;
     private String gender;
+    private long lunchId;
 
     public long getId() {
         return id;
@@ -56,6 +57,14 @@ public class StudentsDto {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public long getLunchId() {
+        return lunchId;
+    }
+
+    public void setLunchId(long lunchId) {
+        this.lunchId = lunchId;
     }
 }
 

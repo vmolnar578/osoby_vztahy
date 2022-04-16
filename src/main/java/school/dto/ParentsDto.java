@@ -8,6 +8,7 @@ public class ParentsDto {
     private String lastName;
     private Date dateOfBirth;
     private String gender;
+    private long phoneNumber;
 
     public long getId() {
         return id;
@@ -47,6 +48,14 @@ public class ParentsDto {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
  
