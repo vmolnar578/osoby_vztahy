@@ -26,7 +26,7 @@ public class TeachersEntity {
     private long lunchId;
 
     @Column(name = "phone_number", nullable = false)
-    private long phoneNumber;
+    private String phoneNumber;
 
     public long getId() {
         return id;
@@ -76,11 +76,11 @@ public class TeachersEntity {
         this.lunchId = lunchId;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
