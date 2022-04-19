@@ -23,7 +23,7 @@ public class ParentsEntity {
     private String gender;
 
     @Column(name = "phone_number", nullable = false)
-    private long phoneNumber;
+    private String phoneNumber;
 
     public long getId() {
         return id;
@@ -65,11 +65,11 @@ public class ParentsEntity {
         this.gender = gender;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

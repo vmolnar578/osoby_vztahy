@@ -9,7 +9,7 @@ public class TeachersDto {
     private Date dateOfBirth;
     private String gender;
     private long lunchId;
-    private long phoneNumber;
+    private String phoneNumber;
 
     public long getId() {
         return id;
@@ -59,11 +59,11 @@ public class TeachersDto {
         this.lunchId = lunchId;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

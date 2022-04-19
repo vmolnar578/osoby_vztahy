@@ -8,7 +8,7 @@ public class ParentsDto {
     private String lastName;
     private Date dateOfBirth;
     private String gender;
-    private long phoneNumber;
+    private String phoneNumber;
 
     public long getId() {
         return id;
@@ -50,11 +50,11 @@ public class ParentsDto {
         this.gender = gender;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
