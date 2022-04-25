@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class LunchesDto {
     private long id;
-    private long day;
     private String mainMeal;
+    private String image;
 
     public long getId() {
         return id;
@@ -15,20 +15,20 @@ public class LunchesDto {
         this.id = id;
     }
 
-    public long getDay() {
-        return day;
-    }
-
-    public void setDay(long day) {
-        this.day = day;
-    }
-
     public String getMainMeal() {
         return mainMeal;
     }
 
     public void setMainMeal(String mainMeal) {
         this.mainMeal = mainMeal;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 

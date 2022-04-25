@@ -56,7 +56,7 @@ public class LunchesService {
 
         LunchesDto lunch = new LunchesDto();
         lunch.setId(lunchesEntity.getId());
-        lunch.setDay(lunchesEntity.getDay());
+        lunch.setImage(lunchesEntity.getImage());
         lunch.setMainMeal(lunchesEntity.getMainMeal());
         return lunch;
     }
@@ -64,7 +64,7 @@ public class LunchesService {
     private LunchesEntity convertToEntity(LunchesEntity lunch, LunchesDto lunchesDto) {
         if (lunchesDto == null) return null;
 
-        lunch.setDay(lunchesDto.getDay());
+        lunch.setImage(lunchesDto.getImage());
         lunch.setMainMeal(lunchesDto.getMainMeal());
         return lunch;
     }

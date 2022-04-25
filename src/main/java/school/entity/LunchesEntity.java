@@ -10,11 +10,11 @@ public class LunchesEntity {
     @GeneratedValue
     private long id;
 
-    @Column(name = "day", nullable = false)
-    private long day;
-
     @Column(name = "main_meal", nullable = false)
     private String mainMeal;
+
+    @Column(columnDefinition="VARCHAR(512) DEFAULT 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwbGozsS9QP10p16rZiCrQD0koXVkI4c7LwUHab9dkmFRcN0VqCkB37f2y0EnySItwykg&usqp=CAU'")
+    private String image;
 
     public long getId() {
         return id;
@@ -24,19 +24,19 @@ public class LunchesEntity {
         this.id = id;
     }
 
-    public long getDay() {
-        return day;
-    }
-
-    public void setDay(long day) {
-        this.day = day;
-    }
-
     public String getMainMeal() {
         return mainMeal;
     }
 
     public void setMainMeal(String mainMeal) {
         this.mainMeal = mainMeal;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
