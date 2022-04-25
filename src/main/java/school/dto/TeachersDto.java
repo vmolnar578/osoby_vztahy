@@ -10,6 +10,7 @@ public class TeachersDto {
     private String gender;
     private long lunchId;
     private String phoneNumber;
+    private String image;
 
     public long getId() {
         return id;
@@ -65,6 +66,14 @@ public class TeachersDto {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 

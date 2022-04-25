@@ -10,6 +10,7 @@ public class StudentsDto {
     private Date dateOfBirth;
     private String gender;
     private long lunchId;
+    private String image;
 
     public long getId() {
         return id;
@@ -65,6 +66,14 @@ public class StudentsDto {
 
     public void setLunchId(long lunchId) {
         this.lunchId = lunchId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 
