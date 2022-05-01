@@ -3,7 +3,6 @@ package school.controller;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
-import school.entity.LunchesEntity;
 import school.service.LunchesService;
 import school.dto.LunchesDto;
 
@@ -16,7 +15,7 @@ public class LunchesController {
     private LunchesService service;
 
     @PostMapping("/api/lunches")
-    public LunchesEntity addLunch(@RequestBody LunchesDto lunch) {
+    public Long addLunch(@RequestBody LunchesDto lunch) {
         return service.createLunch(lunch);
     }
 

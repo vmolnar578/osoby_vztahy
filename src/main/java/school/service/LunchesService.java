@@ -15,9 +15,10 @@ public class LunchesService {
     @Resource
     private LunchesRepository lunchesRepository;
 
-    public LunchesEntity createLunch(LunchesDto lunchesDto) {
+    public Long createLunch(LunchesDto lunchesDto) {
         LunchesEntity lunch = new LunchesEntity();
-        return lunchesRepository.save(convertToEntity(lunch, lunchesDto));
+        lunchesRepository.save(convertToEntity(lunch, lunchesDto));
+        return lunch.getId();
     }
 
     public List<LunchesDto> getAllLunches() {

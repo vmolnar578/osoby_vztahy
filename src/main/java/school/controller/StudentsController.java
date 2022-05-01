@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 import school.service.StudentsService;
-import school.entity.StudentsEntity;
 import school.dto.StudentsDto;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class StudentsController {
     private StudentsService service;
 
     @PostMapping("/api/students")
-    public StudentsEntity addStudent(@RequestBody StudentsDto student) {
+    public Long addStudent(@RequestBody StudentsDto student) {
         return service.createStudent(student);
     }
 

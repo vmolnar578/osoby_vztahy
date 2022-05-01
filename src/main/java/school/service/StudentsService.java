@@ -15,9 +15,10 @@ public class StudentsService {
     @Resource
     private StudentsRepository studentsRepository;
 
-    public StudentsEntity createStudent(StudentsDto studentsDto) {
+    public Long createStudent(StudentsDto studentsDto) {
         StudentsEntity student = new StudentsEntity();
-        return studentsRepository.save(convertToEntity(student, studentsDto));
+        studentsRepository.save(convertToEntity(student, studentsDto));
+        return student.getId();
     }
 
     public List<StudentsDto> getAllStudents() {
@@ -74,6 +75,7 @@ public class StudentsService {
         student.setGender(studentsDto.getGender());
         student.setDateOfBirth(studentsDto.getDateOfBirth());
         student.setLunchId(studentsDto.getLunchId());
+        student.setImage(studentsDto.getImage());
         return student;
     }
 

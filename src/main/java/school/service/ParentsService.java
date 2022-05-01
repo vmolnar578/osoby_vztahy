@@ -15,9 +15,10 @@ public class ParentsService {
     @Resource
     private ParentsRepository parentsRepository;
 
-    public ParentsEntity createParent(ParentsDto parentsDto) {
+    public Long createParent(ParentsDto parentsDto) {
         ParentsEntity parent = new ParentsEntity();
-        return parentsRepository.save(convertToEntity(parent, parentsDto));
+        parentsRepository.save(convertToEntity(parent, parentsDto));
+        return parent.getId();
     }
 
     public List<ParentsDto> getAllParents() {
@@ -72,6 +73,7 @@ public class ParentsService {
         parent.setGender(parentsDto.getGender());
         parent.setDateOfBirth(parentsDto.getDateOfBirth());
         parent.setPhoneNumber(parentsDto.getPhoneNumber());
+        parent.setImage(parentsDto.getImage());
         return parent;
     }
 

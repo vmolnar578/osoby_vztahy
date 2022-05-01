@@ -1,6 +1,8 @@
 package school.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,19 +17,28 @@ public class TeachersService {
     @Resource
     private TeachersRepository teachersRepository;
 
-    public TeachersEntity createTeacher(TeachersDto teachersDto) {
+    @Transactional
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Long createTeacher(TeachersDto teachersDto) {
         TeachersEntity teacher = new TeachersEntity();
-        return teachersRepository.save(convertToEntity(teacher, teachersDto));
+        teachersRepository.save(convertToEntity(teacher, teachersDto));
+        return teacher.getId();
     }
 
+    @Transactional
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<TeachersDto> getAllTeachers() {
         return convertToDTOs(teachersRepository.findAll());
     }
 
+    @Transactional
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public TeachersDto getTeacherById(Long id) {
         return convertToDTO(teachersRepository.findById(id).orElse(null));
     }
 
+    @Transactional
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public TeachersDto editTeacherById(Long personId, TeachersDto teachersDto) {
         TeachersEntity teacher = teachersRepository.findById(personId).orElse(null);
         if (teacher == null) return null;
@@ -35,6 +46,8 @@ public class TeachersService {
         return convertToDTO(teachersRepository.save(convertToEntity(teacher, teachersDto)));
     }
 
+    @Transactional
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void removeTeacherById(Long id) {
         if (teachersRepository.existsById(id)) {
             teachersRepository.deleteById(id);
@@ -74,6 +87,7 @@ public class TeachersService {
         teacher.setDateOfBirth(teachersDto.getDateOfBirth());
         teacher.setLunchId(teachersDto.getLunchId());
         teacher.setPhoneNumber(teachersDto.getPhoneNumber());
+        teacher.setImage(teachersDto.getImage());
         return teacher;
     }
 

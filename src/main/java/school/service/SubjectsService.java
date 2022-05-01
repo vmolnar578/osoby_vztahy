@@ -15,9 +15,10 @@ public class SubjectsService {
     @Resource
     private SubjectsRepository subjectsRepository;
 
-    public SubjectsEntity createSubject(SubjectsDto subjectsDto) {
+    public Long createSubject(SubjectsDto subjectsDto) {
         SubjectsEntity subject = new SubjectsEntity();
-        return subjectsRepository.save(convertToEntity(subject, subjectsDto));
+        subjectsRepository.save(convertToEntity(subject, subjectsDto));
+        return subject.getId();
     }
 
     public List<SubjectsDto> getAllSubjects() {
