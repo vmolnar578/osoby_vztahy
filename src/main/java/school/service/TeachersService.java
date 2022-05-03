@@ -26,7 +26,7 @@ public class TeachersService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     public List<TeachersDto> getAllTeachers() {
         return convertToDTOs(teachersRepository.findAll());
     }
@@ -47,7 +47,6 @@ public class TeachersService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void removeTeacherById(Long id) {
         if (teachersRepository.existsById(id)) {
             teachersRepository.deleteById(id);
