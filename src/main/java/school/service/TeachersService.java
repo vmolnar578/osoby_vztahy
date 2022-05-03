@@ -75,6 +75,7 @@ public class TeachersService {
         teacher.setGender(teachersEntity.getGender());
         teacher.setLunchId(teachersEntity.getLunchId());
         teacher.setPhoneNumber(teachersEntity.getPhoneNumber());
+        teacher.setImage(teachersEntity.getImage());
         return teacher;
     }
 

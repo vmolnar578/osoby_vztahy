@@ -62,6 +62,7 @@ public class ParentsService {
         parent.setDateOfBirth(parentsEntity.getDateOfBirth());
         parent.setGender(parentsEntity.getGender());
         parent.setPhoneNumber(parentsEntity.getPhoneNumber());
+        parent.setImage(parentsEntity.getImage());
         return parent;
     }
 

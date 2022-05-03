@@ -63,6 +63,7 @@ public class StudentsService {
         student.setGender(studentsEntity.getGender());
         student.setDateOfBirth(studentsEntity.getDateOfBirth());
         student.setLunchId(studentsEntity.getLunchId());
+        student.setImage(studentsEntity.getImage());
         return student;
     }
 
