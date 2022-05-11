@@ -2,7 +2,7 @@ package school.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import school.dto.UserRolesDto;
+import school.service.UserRolesDto;
 import school.service.AuthenticationService;
 
 import javax.servlet.http.HttpServletResponse;

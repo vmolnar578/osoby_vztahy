@@ -3,8 +3,8 @@ package school.controller;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
-import school.service.ParentsService;
-import school.dto.ParentsDto;
+import school.service.parents.ParentsService;
+import school.service.parents.ParentsDto;
 
 import java.util.List;
 
