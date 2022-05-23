@@ -29,9 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
-        /*webSecurity.ignoring().antMatchers(
+        /* webSecurity.ignoring().antMatchers(
                 "/**"
-        );*/
+        ); */
 
         webSecurity.ignoring().antMatchers(HttpMethod.POST, "/api/authentication");
     }
