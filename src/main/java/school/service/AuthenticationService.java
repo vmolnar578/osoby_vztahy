@@ -59,7 +59,12 @@ public class AuthenticationService {
             throw new AuthenticationCredentialsNotFoundException("Authentication failed!");
         }
 
+        // Check Token Expiration Time
         validateTokenExpiration(optionalToken.get());
+
+        // Increase Token Expiration Time
+        optionalToken.get().setValidUntil(LocalDateTime.now().plus(TOKEN_VALIDITY_IN_MINUTES, ChronoUnit.MINUTES));
+        tokenRepository.save(optionalToken.get());
 
         Set<RoleEntity> roles = optionalToken.get().getUser().getRoles();
         Set<String> roleNames = roles.stream()
