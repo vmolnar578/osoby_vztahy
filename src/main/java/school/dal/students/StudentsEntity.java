@@ -10,31 +10,31 @@ public class StudentsEntity {
     @GeneratedValue
     private long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "grade", nullable = false)
+    @Column(name = "grade")
     private Integer grade;
 
-    @Column(name = "date_birth", nullable = false)
+    @Column(name = "date_birth")
     private Date dateOfBirth;
 
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private String gender;
 
-    @Column(name = "lunch_id", nullable = false)
+    @Column(name = "lunch_id")
     private long lunchId;
 
-    @Column(name = "parent1_id", nullable = false)
+    @Column(name = "parent1_id")
     private long parentOneId;
 
-    @Column(name = "parent2_id", nullable = false)
+    @Column(name = "parent2_id")
     private long parentTwoId;
 
-    @Column(name = "teacher_id", nullable = false)
+    @Column(name = "teacher_id")
     private long teacherId;
 
     @Column(columnDefinition="VARCHAR(512) DEFAULT 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwbGozsS9QP10p16rZiCrQD0koXVkI4c7LwUHab9dkmFRcN0VqCkB37f2y0EnySItwykg&usqp=CAU'")

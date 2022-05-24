@@ -10,10 +10,10 @@ public class SubjectsEntity {
     @GeneratedValue
     private long id;
 
-    @Column(name = "grade", nullable = false)
+    @Column(name = "grade")
     private long grade;
 
-    @Column(name = "title", nullable = false)
+    @Column(name = "title")
     private String title;
 
     public long getId() {

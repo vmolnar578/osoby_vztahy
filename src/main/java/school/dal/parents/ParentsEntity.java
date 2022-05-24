@@ -10,22 +10,22 @@ public class ParentsEntity {
     @GeneratedValue
     private long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "date_birth", nullable = false)
+    @Column(name = "date_birth")
     private Date dateOfBirth;
 
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private String gender;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "child_id", nullable = false)
+    @Column(name = "child_id")
     private long childId;
 
     @Column(columnDefinition="VARCHAR(512) DEFAULT 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwbGozsS9QP10p16rZiCrQD0koXVkI4c7LwUHab9dkmFRcN0VqCkB37f2y0EnySItwykg&usqp=CAU'")
