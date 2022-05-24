@@ -25,6 +25,9 @@ public class ParentsEntity {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
+    @Column(name = "child_id", nullable = false)
+    private long childId;
+
     @Column(columnDefinition="VARCHAR(512) DEFAULT 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwbGozsS9QP10p16rZiCrQD0koXVkI4c7LwUHab9dkmFRcN0VqCkB37f2y0EnySItwykg&usqp=CAU'")
     private String image;
 
@@ -74,6 +77,14 @@ public class ParentsEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public long getChildId() {
+        return childId;
+    }
+
+    public void setChildId(long childId) {
+        this.childId = childId;
     }
 
     public String getImage() {

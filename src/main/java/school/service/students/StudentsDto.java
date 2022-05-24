@@ -1,5 +1,6 @@
 package school.service.students;
 
+import javax.persistence.Column;
 import java.util.Date;
 
 public class StudentsDto {
@@ -10,6 +11,9 @@ public class StudentsDto {
     private Date dateOfBirth;
     private String gender;
     private long lunchId;
+    private long parentOneId;
+    private long parentTwoId;
+    private long teacherId;
     private String image;
 
     public long getId() {
@@ -66,6 +70,30 @@ public class StudentsDto {
 
     public void setLunchId(long lunchId) {
         this.lunchId = lunchId;
+    }
+
+    public long getParentOneId() {
+        return parentOneId;
+    }
+
+    public void setParentOneId(long parentOneId) {
+        this.parentOneId = parentOneId;
+    }
+
+    public long getParentTwoId() {
+        return parentTwoId;
+    }
+
+    public void setParentTwoId(long parentTwoId) {
+        this.parentTwoId = parentTwoId;
+    }
+
+    public long getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(long teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getImage() {

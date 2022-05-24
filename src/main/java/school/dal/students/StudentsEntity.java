@@ -28,6 +28,15 @@ public class StudentsEntity {
     @Column(name = "lunch_id", nullable = false)
     private long lunchId;
 
+    @Column(name = "parent1_id", nullable = false)
+    private long parentOneId;
+
+    @Column(name = "parent2_id", nullable = false)
+    private long parentTwoId;
+
+    @Column(name = "teacher_id", nullable = false)
+    private long teacherId;
+
     @Column(columnDefinition="VARCHAR(512) DEFAULT 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwbGozsS9QP10p16rZiCrQD0koXVkI4c7LwUHab9dkmFRcN0VqCkB37f2y0EnySItwykg&usqp=CAU'")
     private String image;
 
@@ -85,6 +94,30 @@ public class StudentsEntity {
 
     public void setLunchId(long lunchId) {
         this.lunchId = lunchId;
+    }
+
+    public long getParentOneId() {
+        return parentOneId;
+    }
+
+    public void setParentOneId(long parentOneId) {
+        this.parentOneId = parentOneId;
+    }
+
+    public long getParentTwoId() {
+        return parentTwoId;
+    }
+
+    public void setParentTwoId(long parentTwoId) {
+        this.parentTwoId = parentTwoId;
+    }
+
+    public long getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(long teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getImage() {

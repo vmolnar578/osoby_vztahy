@@ -24,7 +24,7 @@ public class AuthenticationService {
     public AuthenticationService(UserRepository userRepository, TokenRepository tokenRepository) {
         this.userRepository = userRepository;
         this.tokenRepository = tokenRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = new BCryptPasswordEncoder(10);
     }
 
     @Transactional
@@ -44,7 +44,7 @@ public class AuthenticationService {
         String randomString = UUID.randomUUID().toString();
         token.setToken(randomString);
         token.setUser(optionalUser.get());
-        token.setValidUntil(LocalDateTime.now());
+        token.setValidUntil(LocalDateTime.now().plus(TOKEN_VALIDITY_IN_MINUTES, ChronoUnit.MINUTES));
 
         tokenRepository.save(token);
 

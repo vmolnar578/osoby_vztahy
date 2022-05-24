@@ -9,6 +9,7 @@ public class ParentsDto {
     private Date dateOfBirth;
     private String gender;
     private String phoneNumber;
+    private long childId;
     private String image;
 
     public long getId() {
@@ -57,6 +58,14 @@ public class ParentsDto {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public long getChildId() {
+        return childId;
+    }
+
+    public void setChildId(long childId) {
+        this.childId = childId;
     }
 
     public String getImage() {

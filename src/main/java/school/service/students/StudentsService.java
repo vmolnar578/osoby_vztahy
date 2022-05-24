@@ -74,6 +74,9 @@ public class StudentsService {
         student.setGender(studentsEntity.getGender());
         student.setDateOfBirth(studentsEntity.getDateOfBirth());
         student.setLunchId(studentsEntity.getLunchId());
+        student.setParentOneId(studentsEntity.getParentOneId());
+        student.setParentTwoId(studentsEntity.getParentTwoId());
+        student.setTeacherId(studentsEntity.getTeacherId());
         student.setImage(studentsEntity.getImage());
         return student;
     }
@@ -88,6 +91,9 @@ public class StudentsService {
         student.setDateOfBirth(studentsDto.getDateOfBirth());
         student.setLunchId(studentsDto.getLunchId());
         student.setImage(studentsDto.getImage());
+        student.setParentOneId(studentsDto.getParentOneId());
+        student.setParentTwoId(studentsDto.getParentTwoId());
+        student.setTeacherId(studentsDto.getTeacherId());
         return student;
     }
 
