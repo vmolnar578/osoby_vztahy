@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.savedrequest.NullRequestCache;
 import org.springframework.web.cors.CorsConfiguration;
 import school.core.DemoAuthenticationEntryPoint;
 import school.core.DemoAuthenticationFilter;
@@ -33,8 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/**"
         );*/
 
-        //webSecurity.ignoring().antMatchers(HttpMethod.GET, "/api/users");
-        webSecurity.ignoring().antMatchers(HttpMethod.POST, "/api/authentication");
+        webSecurity.ignoring().antMatchers(HttpMethod.POST, "/api/authentication", "/api/users/**");
     }
 
     @Override

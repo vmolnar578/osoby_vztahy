@@ -24,29 +24,13 @@ public class UsersService {
         this.passwordEncoder = new BCryptPasswordEncoder(10);
 
         RoleEntity role = new RoleEntity();
-        Long[] roleId = {1L,2L,3L,4L};
-        String[] roleName = {"ROLE_ADMIN", "ROLE_TEACHER", "ROLE_PARENT", "ROLE_STUDENT"};
+        Long[] roleId = {1L,2L,3L,4L,5L};
+        String[] roleName = {"ROLE_ADMIN", "ROLE_USER", "ROLE_TEACHER", "ROLE_PARENT", "ROLE_STUDENT"};
         for(int i = 0; i < roleId.length; i++) {
             role.setId(roleId[i]);
             role.setRoleName(roleName[i]);
             this.roleRepository.save(role);
         }
-
-        /*role.setId(1L);
-        role.setRoleName("ROLE_ADMIN");
-        this.roleRepository.save(role);
-
-        role.setId(2L);
-        role.setRoleName("ROLE_TEACHER");
-        this.roleRepository.save(role);
-
-        role.setId(3L);
-        role.setRoleName("ROLE_PARENT");
-        this.roleRepository.save(role);
-
-        role.setId(4L);
-        role.setRoleName("ROLE_STUDENT");
-        this.roleRepository.save(role);*/
 
         //--------------------------------------\\
 
@@ -67,15 +51,14 @@ public class UsersService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Long createUser(UsersDto usersDto) {
         UserEntity user = new UserEntity();
         usersDto.setPasswordHash(this.passwordEncoder.encode(usersDto.getPasswordHash()));
         convertToEntity(user, usersDto);
 
         RoleEntity role = new RoleEntity();
-        role.setId(1L);
-        role.setRoleName("ROLE_ADMIN");
+        role.setId(2L);
+        role.setRoleName("ROLE_USER");
         Set<RoleEntity> roles = new HashSet<>();
         roles.add(role);
 
