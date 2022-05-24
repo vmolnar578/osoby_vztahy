@@ -24,7 +24,15 @@ public class UsersService {
         this.passwordEncoder = new BCryptPasswordEncoder(10);
 
         RoleEntity role = new RoleEntity();
-        role.setId(1L);
+        Long[] roleId = {1L,2L,3L,4L};
+        String[] roleName = {"ROLE_ADMIN", "ROLE_TEACHER", "ROLE_PARENT", "ROLE_STUDENT"};
+        for(int i = 0; i < roleId.length; i++) {
+            role.setId(roleId[i]);
+            role.setRoleName(roleName[i]);
+            this.roleRepository.save(role);
+        }
+
+        /*role.setId(1L);
         role.setRoleName("ROLE_ADMIN");
         this.roleRepository.save(role);
 
@@ -38,7 +46,7 @@ public class UsersService {
 
         role.setId(4L);
         role.setRoleName("ROLE_STUDENT");
-        this.roleRepository.save(role);
+        this.roleRepository.save(role);*/
 
         //--------------------------------------\\
 

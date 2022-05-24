@@ -2,7 +2,7 @@ package school.service.lunches;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +13,28 @@ import school.dal.lunches.LunchesRepository;
 @Service
 public class LunchesService {
 
-    @Resource
-    private LunchesRepository lunchesRepository;
+    private final LunchesRepository lunchesRepository;
+
+    public LunchesService(LunchesRepository lunchesRepository) {
+        this.lunchesRepository = lunchesRepository;
+
+        LunchesEntity lunch = new LunchesEntity();
+        String[] mainMeal = {"Kalerab1", "Kalerab2", "Kalerab3", "Kalerab4", "Kalerab5"};
+        String[] mainMealImg = {
+                "https://zdravopedia.sk/assets/images/Zelenina/kalerab.jpg",
+                "https://zdravopedia.sk/assets/images/Zelenina/kalerab.jpg",
+                "https://zdravopedia.sk/assets/images/Zelenina/kalerab.jpg",
+                "https://zdravopedia.sk/assets/images/Zelenina/kalerab.jpg",
+                "https://zdravopedia.sk/assets/images/Zelenina/kalerab.jpg"
+        };
+
+        for(int i = 0; i < mainMeal.length; i++) {
+            lunch.setId(i+1);
+            lunch.setMainMeal(mainMeal[i]);
+            lunch.setImage(mainMealImg[i]);
+            lunchesRepository.save(lunch);
+        }
+    }
 
     @Transactional
     @PreAuthorize("hasRole('ROLE_ADMIN')")

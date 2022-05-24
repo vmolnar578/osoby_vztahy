@@ -7,7 +7,6 @@ import java.util.Date;
 @Table(name = "lunches")
 public class LunchesEntity {
     @Id
-    @GeneratedValue
     private long id;
 
     @Column(name = "main_meal", nullable = false)
