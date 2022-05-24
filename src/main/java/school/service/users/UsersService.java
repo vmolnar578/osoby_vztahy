@@ -5,21 +5,57 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import school.dal.UserEntity;
-import school.dal.UserRepository;
+import school.dal.*;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UsersService {
-    @Resource
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
     private PasswordEncoder passwordEncoder;
-    public UsersService() {
+    public UsersService(UserRepository userRepository, RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = new BCryptPasswordEncoder(10);
+
+        RoleEntity role = new RoleEntity();
+        role.setId(1L);
+        role.setRoleName("ROLE_ADMIN");
+        this.roleRepository.save(role);
+
+        role.setId(2L);
+        role.setRoleName("ROLE_TEACHER");
+        this.roleRepository.save(role);
+
+        role.setId(3L);
+        role.setRoleName("ROLE_PARENT");
+        this.roleRepository.save(role);
+
+        role.setId(4L);
+        role.setRoleName("ROLE_STUDENT");
+        this.roleRepository.save(role);
+
+        //--------------------------------------\\
+
+        if (userRepository.findByUsername("Admin").isEmpty()) {
+            UserEntity user = new UserEntity();
+            user.setId(1L);
+            user.setUsername("Admin");
+            user.setPasswordHash("$2a$10$q82GgaHI5eXi2.wuL.iHCuXnWxOAQpslG3ItVhlgW5dBQSLp9i3j.");
+
+            role.setId(1L);
+            role.setRoleName("ROLE_ADMIN");
+            Set<RoleEntity> roles = new HashSet<>();
+            roles.add(role);
+
+            user.setRoles(roles);
+            this.userRepository.save(user);
+        }
     }
 
     @Transactional
@@ -27,7 +63,16 @@ public class UsersService {
     public Long createUser(UsersDto usersDto) {
         UserEntity user = new UserEntity();
         usersDto.setPasswordHash(this.passwordEncoder.encode(usersDto.getPasswordHash()));
-        userRepository.save(convertToEntity(user, usersDto));
+        convertToEntity(user, usersDto);
+
+        RoleEntity role = new RoleEntity();
+        role.setId(1L);
+        role.setRoleName("ROLE_ADMIN");
+        Set<RoleEntity> roles = new HashSet<>();
+        roles.add(role);
+
+        user.setRoles(roles);
+        userRepository.save(user);
         return user.getId();
     }
 

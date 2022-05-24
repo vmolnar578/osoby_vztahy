@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/**"
         );*/
 
+        //webSecurity.ignoring().antMatchers(HttpMethod.GET, "/api/users");
         webSecurity.ignoring().antMatchers(HttpMethod.POST, "/api/authentication");
     }
 
