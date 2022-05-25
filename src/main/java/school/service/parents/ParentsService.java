@@ -17,7 +17,7 @@ public class ParentsService {
     private ParentsRepository parentsRepository;
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public Long createParent(ParentsDto parentsDto) {
         ParentsEntity parent = new ParentsEntity();
         parentsRepository.save(convertToEntity(parent, parentsDto));
@@ -25,19 +25,19 @@ public class ParentsService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public List<ParentsDto> getAllParents() {
         return convertToDTOs(parentsRepository.findAll());
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public ParentsDto getParentById(Long id) {
         return convertToDTO(parentsRepository.findById(id).orElse(null));
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public ParentsDto editParentById(Long personId, ParentsDto parentsDto) {
         ParentsEntity parent = parentsRepository.findById(personId).orElse(null);
         if (parent == null) return null;
@@ -46,7 +46,7 @@ public class ParentsService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public void removeParentById(Long id) {
         if (parentsRepository.existsById(id)) {
             parentsRepository.deleteById(id);

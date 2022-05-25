@@ -37,7 +37,7 @@ public class LunchesService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public Long createLunch(LunchesDto lunchesDto) {
         LunchesEntity lunch = new LunchesEntity();
         lunchesRepository.save(convertToEntity(lunch, lunchesDto));
@@ -45,19 +45,19 @@ public class LunchesService {
     }
 
     @Transactional
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public List<LunchesDto> getAllLunches() {
         return convertToDTOs(lunchesRepository.findAll());
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public LunchesDto getLunchById(Long id) {
         return convertToDTO(lunchesRepository.findById(id).orElse(null));
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public LunchesDto editLunchById(Long lunchId, LunchesDto lunchesDto) {
         LunchesEntity lunch = lunchesRepository.findById(lunchId).orElse(null);
         if (lunch == null) return null;
@@ -66,7 +66,7 @@ public class LunchesService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public void removeLunchById(Long id) {
         if (lunchesRepository.existsById(id)) {
             lunchesRepository.deleteById(id);

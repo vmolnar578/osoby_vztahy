@@ -17,7 +17,7 @@ public class SubjectsService {
     private SubjectsRepository subjectsRepository;
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public Long createSubject(SubjectsDto subjectsDto) {
         SubjectsEntity subject = new SubjectsEntity();
         subjectsRepository.save(convertToEntity(subject, subjectsDto));
@@ -25,19 +25,19 @@ public class SubjectsService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public List<SubjectsDto> getAllSubjects() {
         return convertToDTOs(subjectsRepository.findAll());
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public SubjectsDto getSubjectById(Long id) {
         return convertToDTO(subjectsRepository.findById(id).orElse(null));
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public SubjectsDto editSubjectById(Long subjectId, SubjectsDto subjectsDto) {
         SubjectsEntity subject = subjectsRepository.findById(subjectId).orElse(null);
         if (subject == null) return null;
@@ -46,7 +46,7 @@ public class SubjectsService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public void removeSubjectById(Long id) {
         if (subjectsRepository.existsById(id)) {
             subjectsRepository.deleteById(id);

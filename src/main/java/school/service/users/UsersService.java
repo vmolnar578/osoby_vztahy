@@ -52,6 +52,8 @@ public class UsersService {
 
     @Transactional
     public Long createUser(UsersDto usersDto) {
+        System.out.println(usersDto.getUsername());
+        System.out.println(usersDto.getPasswordHash());
         UserEntity user = new UserEntity();
         usersDto.setPasswordHash(this.passwordEncoder.encode(usersDto.getPasswordHash()));
         convertToEntity(user, usersDto);

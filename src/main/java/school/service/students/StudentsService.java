@@ -17,7 +17,7 @@ public class StudentsService {
     private StudentsRepository studentsRepository;
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public Long createStudent(StudentsDto studentsDto) {
         StudentsEntity student = new StudentsEntity();
         studentsRepository.save(convertToEntity(student, studentsDto));
@@ -25,19 +25,19 @@ public class StudentsService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public List<StudentsDto> getAllStudents() {
         return convertToDTOs(studentsRepository.findAll());
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_TEACHER', 'ROLE_PARENT', 'ROLE_STUDENT')")
     public StudentsDto getStudentById(Long id) {
         return convertToDTO(studentsRepository.findById(id).orElse(null));
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public StudentsDto editStudentById(Long personId, StudentsDto studentsDto) {
         StudentsEntity student = studentsRepository.findById(personId).orElse(null);
         if (student == null) return null;
@@ -46,7 +46,7 @@ public class StudentsService {
     }
 
     @Transactional
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public void removeStudentById(Long id) {
         if (studentsRepository.existsById(id)) {
             studentsRepository.deleteById(id);
