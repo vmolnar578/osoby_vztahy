@@ -3,9 +3,8 @@ package school.controller;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
-import school.service.ParentsService;
-import school.entity.ParentsEntity;
-import school.dto.ParentsDto;
+import school.service.parents.ParentsService;
+import school.service.parents.ParentsDto;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class ParentsController {
     private ParentsService service;
 
     @PostMapping("/api/parents")
-    public ParentsEntity addParent(@RequestBody ParentsDto parent) {
+    public Long addParent(@RequestBody ParentsDto parent) {
         return service.createParent(parent);
     }
 

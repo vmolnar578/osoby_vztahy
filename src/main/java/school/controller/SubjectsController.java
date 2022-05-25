@@ -3,9 +3,8 @@ package school.controller;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
-import school.service.SubjectsService;
-import school.entity.SubjectsEntity;
-import school.dto.SubjectsDto;
+import school.service.subjects.SubjectsService;
+import school.service.subjects.SubjectsDto;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class SubjectsController {
     private SubjectsService service;
 
     @PostMapping("/api/subjects")
-    public SubjectsEntity addSubject(@RequestBody SubjectsDto subject) {
+    public Long addSubject(@RequestBody SubjectsDto subject) {
         return service.createSubject(subject);
     }
 

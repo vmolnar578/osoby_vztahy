@@ -5,7 +5,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import school.dto.UserRolesDto;
 import school.dal.*;
 
 import java.time.LocalDateTime;
@@ -25,7 +24,7 @@ public class AuthenticationService {
     public AuthenticationService(UserRepository userRepository, TokenRepository tokenRepository) {
         this.userRepository = userRepository;
         this.tokenRepository = tokenRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = new BCryptPasswordEncoder(10);
     }
 
     @Transactional
@@ -45,7 +44,7 @@ public class AuthenticationService {
         String randomString = UUID.randomUUID().toString();
         token.setToken(randomString);
         token.setUser(optionalUser.get());
-        token.setValidUntil(LocalDateTime.now());
+        token.setValidUntil(LocalDateTime.now().plus(TOKEN_VALIDITY_IN_MINUTES, ChronoUnit.MINUTES));
 
         tokenRepository.save(token);
 
@@ -60,7 +59,12 @@ public class AuthenticationService {
             throw new AuthenticationCredentialsNotFoundException("Authentication failed!");
         }
 
+        // Check Token Expiration Time
         validateTokenExpiration(optionalToken.get());
+
+        // Increase Token Expiration Time
+        optionalToken.get().setValidUntil(LocalDateTime.now().plus(TOKEN_VALIDITY_IN_MINUTES, ChronoUnit.MINUTES));
+        tokenRepository.save(optionalToken.get());
 
         Set<RoleEntity> roles = optionalToken.get().getUser().getRoles();
         Set<String> roleNames = roles.stream()

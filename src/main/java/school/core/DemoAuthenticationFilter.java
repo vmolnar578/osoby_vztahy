@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import school.service.AuthenticationService;
-import school.dto.UserRolesDto;
+import school.service.UserRolesDto;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
